@@ -1,0 +1,27 @@
+module tb_decoder_3to8;
+
+    // Testbench signals
+    logic [2:0] A;
+    logic [7:0] Y;
+
+    // Instantiate the hierarchical decoder
+    decoder_3to8 dut (
+        .A(A),
+        .Y(Y)
+    );
+
+    // Test Procedure
+    initial begin
+        $display("Starting hierarchical decoder test...");
+
+        // Test all possible inputs
+        for (int i = 0; i < 8; i++) begin
+            A = i; #10;
+            $display("A = %b -> Y = %b", A, Y);
+        end
+
+        $display("Test completed.");
+        $stop;
+    end
+
+endmodule
